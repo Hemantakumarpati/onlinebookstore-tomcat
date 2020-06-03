@@ -25,7 +25,7 @@ node{
 '''
    }*/
    stage('Deploy to Tomcat'){
-     bat "copy target\\OnlineQuiz.war \"${tomcatWeb}"
+     bat "copy target\\OnlineBookStore.war \"${tomcatWeb}"
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
