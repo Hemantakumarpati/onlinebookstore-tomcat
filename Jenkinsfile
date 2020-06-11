@@ -1,49 +1,23 @@
-pipeline {
-  environment {
-    registry = "hemantakumarpati/onlinebookstore"
-    registryCredential = 'dockeruser'
-    dockerImage = ''
- }
-  agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/Hemantakumarpati/OnlineBookStore.git'
+node{
+   def tomcatWeb = 'C:\\apache-tomcat-10.0.0-M5-windows-x64\\apache-tomcat-10.0.0-M5\\webapps'
+   def tomcatBin = 'C:\\apache-tomcat-10.0.0-M5-windows-x64\\apache-tomcat-10.0.0-M5\\bin'
+   def tomcatStatus = ''
+   
+  stage('SCM Checkout'){
+     git 'https://github.com/Hemantakumarpati/onlinebookstore-bikash.git'
+   }
+  
+   stage('Compile-Package-create-war-file'){
+         bat "mvn package"
       }
-    }
-    stage('Compile Package and Create war file') {
-      steps {
-        sh "mvn package"
-      }
-    }
-   stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    /*stage('Test Image' ) {
-                agent {
-                docker { image 'hemantakumarpati/onlinebookstore:$BUILD_NUMBER' }
-            }
-            steps {
-                sh 'docker --version'
-            }
-        }*/
-    stage('Deploy Image') {
-      steps{
-        script {
-          //withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          //docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
-          //sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-          //dockerImage.push("$BUILD_NUMBER")
-          //dockerImage.push("latest")
-          sh "/home/hemant_pati/dockerpush.sh ${BUILD_NUMBER}"
-            //}
-       // }
-      }
-    }
-  }
- }
+   stage('Deploy to Tomcat'){
+     bat "copy target\\onlinebookstore.war \"${tomcatWeb}"
+   }
+      stage ('Start Tomcat Server') {
+         sleep(time:5,unit:"SECONDS") 
+         //bat "${tomcatBin}\\startup.bat"
+         bat "C:\\apache-tomcat-10.0.0-M5-windows-x64\\apache-tomcat-10.0.0-M5\\binstartup.bat"
+         sleep(time:100,unit:"SECONDS")
+   }
 }
+
