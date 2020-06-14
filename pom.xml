@@ -11,7 +11,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.release>11</maven.compiler.release>
-  </properties>
+    <sonar.sources>src/main/java,src/main/webapp</sonar.sources>
+    </properties>
 
   <dependencies>
     <dependency>
