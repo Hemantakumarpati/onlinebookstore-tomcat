@@ -24,23 +24,9 @@
 			<version>4.10</version>
 		</dependency>
 	</dependencies>
-<build>
-		<finalName>OnlineBookStore</finalName>
-  <pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.6.0.1398</version>
-      </plugin>
-    </plugins>
-  </pluginManagement>
-  <pluginGroups>
-        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-  </pluginGroups>
-    <profiles>
-        <profile>
-            <id>sonar</id>
+<profiles>
+   <profile>
+	 <id>sonar</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -49,8 +35,19 @@
                 <sonar.host.url>
                   http://104.155.147.126:9000
                 </sonar.host.url>
-            </properties>
-        </profile>
-     </profiles>
-</build>
+	     </properties>
+      <build>
+	<finalName>OnlineBookStore</finalName>
+	  <pluginManagement>
+	    <plugins>
+	      <plugin>
+		<groupId>org.sonarsource.scanner.maven</groupId>
+		<artifactId>sonar-maven-plugin</artifactId>
+		<version>3.6.0.1398</version>
+	      </plugin>
+	    </plugins>
+	  </pluginManagement>
+     </build>
+   </profile>
+  </profiles>
 </project>
