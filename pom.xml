@@ -35,6 +35,9 @@
                 <sonar.host.url>
                   http://104.155.147.126:9000
                 </sonar.host.url>
+		<sonar.log.level>DEBUG</sonar.log.level>
+    		<sonar.verbose>true</sonar.verbose>
+    		<sonar.coverage.exclusions>**/*.js</sonar.coverage.exclusions>
 	     </properties>
       <build>
 	<finalName>OnlineBookStore</finalName>
