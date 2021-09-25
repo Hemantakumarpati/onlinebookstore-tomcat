@@ -10,6 +10,12 @@ node{
    stage('Compile-Package-create-war-file'){
          bat "mvn package"
       }
+   
+   //push war file to artifactory
+   //Code checking with sonarqube
+   //Docker build
+   //Docker push
+   //Kubernetes deployment
    stage('Deploy to Tomcat'){
      bat "copy target\\onlinebookstore.war \"${tomcatWeb}"
    }
