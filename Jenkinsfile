@@ -13,6 +13,7 @@ node{
    
    //push war file to artifactory
    //Code checking with sonarqube
+   //veracode security
    //Docker build
    //Docker push
    //Kubernetes deployment
