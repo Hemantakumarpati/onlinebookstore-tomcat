@@ -18,7 +18,7 @@ node{
    //Docker push
    //Kubernetes deployment
    stage('Deploy to Tomcat'){
-     bat "copy target\\onlinebookstore.war" \"${tomcatWeb}"
+     bat "copy target\\onlinebookstore.war \${tomcatWeb}"
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
