@@ -9,6 +9,7 @@ node{
   
    stage('Compile-Package-create-war-file'){
          bat "mvn package"
+         //sh 'mvn package
       }
    
    //push war file to artifactory
