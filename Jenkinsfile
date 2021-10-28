@@ -6,7 +6,7 @@ node{
   stage('SCM Checkout'){
      git 'https://github.com/Hemantakumarpati/onlinebookstore-tomcat.git'
    }
-  
+ 
    stage('Compile-Package-create-war-file'){
          bat "mvn package"
          //sh 'mvn package
