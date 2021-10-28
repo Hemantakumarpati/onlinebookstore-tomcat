@@ -36,6 +36,11 @@ node{
 				sleep 5
 			                 
 		}
+		stage('email notification') {
+		mail bcc: '', body: '''Hi,
+		Welcome to Jenkins job alert
+		Thanks''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'hemant.pati@gmail.com'
+       	} 
    
   
    stage('Deploy to Tomcat'){
@@ -47,10 +52,6 @@ node{
          bat "C:\\apache-tomcat-10.0.0-M5-windows-x64\\apache-tomcat-10.0.0-M5\\bin\\startup.bat"
          sleep(time:100,unit:"SECONDS")
    }
-	stage('email notification') {
-	mail bcc: '', body: '''Hi,
-	Welcome to Jenkins job alert
-	Thanks''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'hemant.pati@gmail.com'
-}
+	
 }
 
