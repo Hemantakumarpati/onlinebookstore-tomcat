@@ -12,12 +12,32 @@ node{
          //sh 'mvn package
       }
    
-   //push war file to artifactory
-   //Code checking with sonarqube
-   //veracode security
-   //Docker build
-   //Docker push
-   //Kubernetes deployment
+   stage('Unit Test') {
+			steps {
+				echo "Unit Test Completed"
+				sleep 5
+			}
+		}
+		stage('Integration Test') {
+			steps {
+				echo "Integration Test Completed"
+				sleep 5
+			}
+		}
+		stage('Security Test') {
+			steps {
+				echo "Security Test Completed"
+				sleep 5
+			}                    
+		}
+		stage('Selenium Test') {
+			steps {
+				echo "Selenium Test Completed"
+				sleep 5
+			}                    
+		}
+   
+  
    stage('Deploy to Tomcat'){
      bat "copy target\\OnlineBookStore-1.0-SNAPSHOT.war C:\\apache-tomcat-10.0.0-M5-windows-x64\\apache-tomcat-10.0.0-M5\\webapps"
    }
